@@ -16,7 +16,7 @@ def drawing(event):
 	if(lastx!=-1):
 		w.create_line(lastx, lasty, event.x, event.y, fill="black", width="2")
 	lastx,lasty = event.x,event.y
-	lista.append((event.x, event.y))
+	lista.append((event.x, canvas_height-event.y))
 
 def drop(event):
 	global lastx
@@ -26,7 +26,7 @@ def closing(event):
 	print("Terminando a aplicação de coleção de pontos, favor informar o nome de saída do arquivo (formato .npy)")
 	string = input()
 	np.save(string, np.array(lista))
-
+	w.quit()
 
 master = Tk()
 lastx = -1
